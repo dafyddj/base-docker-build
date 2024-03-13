@@ -50,12 +50,13 @@ jobs:
           CHEF_WS_VERSION: 24.2.1058
         with:
           project: chef-workstation
-          version:  ${{ env.CHEF_WS_VERSION }}
+          version: ${{ env.CHEF_WS_VERSION }}
       - name: Prepare Test Kitchen
         env:
           CHEF_LICENSE: accept-silent
-          KITCHEN_DOCKER_VERSION: 3.0.0
-        run: chef gem install kitchen-docker --version ${{ env.KITCHEN_DOCKER_VERSION }}
+          # renovate: datasource=rubygems depName=kitchen-docker
+          KITCHEN-DOCKER_VERSION: 3.0.0
+        run: chef gem install kitchen-docker --version ${{ env.KITCHEN-DOCKER_VERSION }}
       - name: Run Test Kitchen
         run: kitchen test
       - name: Run `semantic-release`
