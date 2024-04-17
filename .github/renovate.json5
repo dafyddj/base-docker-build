@@ -15,6 +15,10 @@
   ],
   "packageRules": [
     {
+      "matchPackageNames": ["actions/python-versions"],
+      "separateMinorPatch": true,
+    },
+    {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "github-actions minor/patch",
