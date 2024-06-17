@@ -60,7 +60,7 @@ jobs:
       - name: Run Test Kitchen
         run: kitchen test
       - name: Run `semantic-release`
-        uses: codfish/semantic-release-action@ac1b7f3783fefcdefdef4f8e3acfbc7e899d5a70 # v3.4.0
+        uses: codfish/semantic-release-action@9a999e0cdb207de2c9d9d4276860435727818989 # v3.4.1
         id: sem-rel
         with:
           dry-run: ${{ !inputs.release }}
