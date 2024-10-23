@@ -13,6 +13,14 @@
     "helpers:pinGitHubActionDigestsToSemver",
     "regexManagers:githubActionsVersions",
   ],
+  "customDatasources": {
+    "omnitruck": {
+      "defaultRegistryUrlTemplate": "https://omnitruck.chef.io/stable/{{packageName}}/versions/latest",
+      "transformTemplates": [
+        "{\"releases\": [{ \"version\": $string($) }] }",
+      ],
+    },
+  },
   "packageRules": [
     {
       "matchPackageNames": ["actions/python-versions"],
