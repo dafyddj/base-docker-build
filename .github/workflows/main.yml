@@ -14,8 +14,19 @@ concurrency:
   cancel-in-progress: ${{ github.ref != format('refs/heads/{0}', github.event.repository.default_branch) }}
 
 jobs:
+  should-run:
+    name: Should run
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      should-run: ${{ steps.action.outputs.should-run }}
+    steps:
+      - id: action
+        uses: techneg-it/should-workflow-run@dcbb88600d59ec2842778ef1e2d41f680f876329 # v1.0.0
   pre-commit:
     name: Run `pre-commit`
+    needs: should-run
+    if: fromJSON(needs.should-run.outputs.should-run)
     runs-on: ubuntu-latest
     env:
       # renovate: datasource=custom.python-versions depName=actions/python-versions versioning=pep440
