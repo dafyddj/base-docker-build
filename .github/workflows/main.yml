@@ -16,7 +16,7 @@ concurrency:
 jobs:
   should-run:
     name: Should run
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     outputs:
       should-run: ${{ steps.action.outputs.should-run }}
@@ -27,7 +27,7 @@ jobs:
     name: Run `pre-commit`
     needs: should-run
     if: fromJSON(needs.should-run.outputs.should-run)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       # renovate: datasource=custom.python-versions depName=actions/python-versions versioning=pep440
       PYTHON_VERSION: 3.13.1
@@ -73,7 +73,7 @@ jobs:
     needs:
       - run-publish-workflow
       - run-test-workflow
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Report success
         run: echo "It works!"
