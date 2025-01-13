@@ -14,6 +14,9 @@ on:
         type: string
       labels:
         type: string
+      no-cache-filter:
+        required: false
+        type: string
       platforms:
         type: string
         default: linux/amd64,linux/arm64
@@ -64,3 +67,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          no-cache-filters: ${{ inputs.no-cache-filter }}
