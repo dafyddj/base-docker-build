@@ -52,6 +52,7 @@ jobs:
       image-namespace: ${{ github.repository_owner }}
       image-repo: base-docker-build
       labels: org.opencontainers.image.authors=AN Author <author@example.org>
+      no-cache-filter: run
       release: false
     secrets:
       registry-password: ${{ matrix.registry == 'ghcr.io' && secrets.GITHUB_TOKEN || secrets.DOCKERHUB_TOKEN }}
@@ -65,6 +66,7 @@ jobs:
     with:
       image-namespace: ${{ github.repository_owner }}
       image-repo: base-docker-build
+      no-cache-filter: run
       release: false
     secrets:
       push-token: ${{ secrets.GITHUB_TOKEN }}
