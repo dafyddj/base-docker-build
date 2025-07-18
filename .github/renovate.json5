@@ -1,49 +1,61 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "enabledManagers": [
-    "custom.regex",
-    "github-actions",
-    "pre-commit",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  enabledManagers: [
+    'custom.regex',
+    'github-actions',
+    'pre-commit',
   ],
-  "extends": [
-    "config:recommended",
-    ":automergeStableNonMajor",
-    ":enablePreCommit",
-    ":semanticCommitTypeAll(fix)",
-    "helpers:pinGitHubActionDigestsToSemver",
-    "regexManagers:githubActionsVersions",
+  extends: [
+    'config:recommended',
+    ':automergeStableNonMajor',
+    ':enablePreCommit',
+    ':semanticCommitTypeAll(fix)',
+    'helpers:pinGitHubActionDigestsToSemver',
+    'customManagers:githubActionsVersions',
   ],
-  "customDatasources": {
-    "omnitruck": {
-      "defaultRegistryUrlTemplate": "https://omnitruck.chef.io/stable/{{packageName}}/versions/latest",
-      "transformTemplates": [
-        "{\"releases\": [{ \"version\": $string($) }] }",
+  customDatasources: {
+    omnitruck: {
+      defaultRegistryUrlTemplate: 'https://omnitruck.chef.io/stable/{{packageName}}/versions/latest',
+      transformTemplates: [
+        '{"releases": [{ "version": $string($) }] }',
       ],
     },
-    "python-versions": {
-      "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/actions/python-versions/refs/heads/main/versions-manifest.json",
-      "transformTemplates": [
-        "{\"releases\": $ }",
+    'python-versions': {
+      defaultRegistryUrlTemplate: 'https://raw.githubusercontent.com/actions/python-versions/refs/heads/main/versions-manifest.json',
+      transformTemplates: [
+        '{"releases": $ }',
       ],
     },
   },
-  "packageRules": [
+  packageRules: [
     {
-      "matchPackageNames": ["actions/python-versions"],
-      "separateMinorPatch": true,
+      matchPackageNames: [
+        'actions/python-versions',
+      ],
+      separateMinorPatch: true,
     },
     {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "github-actions minor/patch",
-      "automerge": true,
+      matchManagers: [
+        'github-actions',
+      ],
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
+      groupName: 'github-actions minor/patch',
+      automerge: true,
     },
     {
-      "matchManagers": ["pre-commit"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "pre-commit hook minor/patch",
-      "automerge": true,
+      matchManagers: [
+        'pre-commit',
+      ],
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
+      groupName: 'pre-commit hook minor/patch',
+      automerge: true,
     },
   ],
-  "platformAutomerge": false,
+  platformAutomerge: false,
 }
