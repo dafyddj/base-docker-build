@@ -12,15 +12,6 @@ on:
       no-cache-filter:
         required: false
         type: string
-      release:
-        type: boolean
-        default: true
-    secrets:
-      push-token:
-        # See https://docs.github.com/en/actions/using-workflows/triggering-a-workflow
-        description: To trigger the `publish` workflow use a GitHub App installation access token
-                     or a personal access token
-        required: true
 
 jobs:
   build:
@@ -63,15 +54,3 @@ jobs:
         run: chef gem install kitchen-docker --version ${{ env.KITCHEN-DOCKER_VERSION }}
       - name: Run Test Kitchen
         run: kitchen test
-      - name: Run `semantic-release`
-        uses: codfish/semantic-release-action@b621d34fabe0940f031e89b6ebfea28322892a10 # v3.5.0
-        id: sem-rel
-        with:
-          dry-run: ${{ !inputs.release }}
-          plugins: |
-            [ "@semantic-release/commit-analyzer",
-              "@semantic-release/release-notes-generator",
-              "@semantic-release/github"
-            ]
-        env:
-          GITHUB_TOKEN: ${{ secrets.push-token }}

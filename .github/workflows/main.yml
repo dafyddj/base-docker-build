@@ -61,15 +61,10 @@ jobs:
     name: Run `test` workflow
     needs: pre-commit
     uses: ./.github/workflows/libtest.yml
-    permissions:
-      contents: write
     with:
       image-namespace: ${{ github.repository_owner }}
       image-repo: base-docker-build
       no-cache-filter: run
-      release: false
-    secrets:
-      push-token: ${{ secrets.GITHUB_TOKEN }}
   release:
     name: Release
     needs:
