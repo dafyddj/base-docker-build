@@ -52,6 +52,7 @@ jobs:
       image-namespace: ${{ github.repository_owner }}
       image-repo: base-docker-build
       labels: org.opencontainers.image.authors=AN Author <author@example.org>
+      build-args: MESSAGE=test message
       no-cache-filter: run
       release: false
     secrets:
@@ -62,6 +63,7 @@ jobs:
     needs: pre-commit
     uses: ./.github/workflows/libtest.yml
     with:
+      build-args: MESSAGE=test message
       image-namespace: ${{ github.repository_owner }}
       image-repo: base-docker-build
       no-cache-filter: run
