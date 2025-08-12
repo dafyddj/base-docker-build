@@ -40,8 +40,14 @@ jobs:
     name: Run `test` workflow
     needs:
       - pre-commit
+    strategy:
+      fail-fast: false
+      matrix:
+        key:
+          - value
     uses: ./.github/workflows/libtest.yml
     with:
+      build-args: KEY=${{ matrix.key }}
       image-namespace: dafyddj
       image-repo: base-docker-build
   results:
