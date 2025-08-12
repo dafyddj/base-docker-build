@@ -8,10 +8,16 @@ on:
 jobs:
   run-publish-workflow:
     name: Run `publish` workflow
+    strategy:
+      fail-fast: false
+      matrix:
+        key:
+          - value
     uses: ./.github/workflows/libpublish.yml
     permissions:
       packages: write
     with:
+      build-args: KEY=${{ matrix.key }}
       image-namespace: dafyddj
       image-repo: base-docker-build
       labels: org.opencontainers.image.authors=AN Author <author@example.org>
