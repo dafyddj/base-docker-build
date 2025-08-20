@@ -1,16 +1,12 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  enabledManagers: [
-    'custom.regex',
-    'github-actions',
-    'pre-commit',
-  ],
   extends: [
-    'config:recommended',
+    'github>techneg-it/.github',
+    'github>techneg-it/.github:groupManager(github-actions,actions/images)',
+    'github>techneg-it/.github:pre-commit',
+    'github>techneg-it/.github:weekly',
     ':automergeStableNonMajor',
-    ':enablePreCommit',
     ':semanticCommitTypeAll(fix)',
-    'helpers:pinGitHubActionDigestsToSemver',
     'customManagers:githubActionsVersions',
   ],
   customDatasources: {
@@ -30,31 +26,15 @@
   packageRules: [
     {
       matchPackageNames: [
+        'AleksaC/hadolint-py',
+      ],
+      versioning: 'loose',
+    },
+    {
+      matchPackageNames: [
         'actions/python-versions',
       ],
       separateMinorPatch: true,
-    },
-    {
-      matchManagers: [
-        'github-actions',
-      ],
-      matchUpdateTypes: [
-        'minor',
-        'patch',
-      ],
-      groupName: 'github-actions minor/patch',
-      automerge: true,
-    },
-    {
-      matchManagers: [
-        'pre-commit',
-      ],
-      matchUpdateTypes: [
-        'minor',
-        'patch',
-      ],
-      groupName: 'pre-commit hook minor/patch',
-      automerge: true,
     },
   ],
   platformAutomerge: false,
