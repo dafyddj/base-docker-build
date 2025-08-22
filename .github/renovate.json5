@@ -37,5 +37,4 @@
       separateMinorPatch: true,
     },
   ],
-  platformAutomerge: false,
 }
