@@ -19,7 +19,7 @@ repos:
         additional_dependencies: [json5==0.9.14]
         args: ["--verbose"]
   - repo: https://github.com/AleksaC/hadolint-py
-    rev: v2.12.1b3
+    rev: v2.13.1
     hooks:
       - id: hadolint
         name: Check Dockerfiles with hadolint
