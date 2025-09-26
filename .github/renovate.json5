@@ -8,7 +8,6 @@
     'github>techneg-it/.github:python-versions',
     'github>techneg-it/.github:weekly',
     ':automergeStableNonMajor',
-    ':semanticCommitTypeAll(fix)',
   ],
   customDatasources: {
     omnitruck: {
