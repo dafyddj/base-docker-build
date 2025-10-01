@@ -27,6 +27,7 @@ jobs:
     needs: should-run
     if: fromJSON(needs.should-run.outputs.should-run)
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     env:
       # renovate: datasource=custom.python-versions depName=actions/python-versions versioning=pep440
       PYTHON_VERSION: 3.13.7
