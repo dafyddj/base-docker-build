@@ -32,4 +32,6 @@ rulesets:
           required_status_checks:
             - context: Collect results
               integration_id: 15368
+            - context: Release
+              integration_id: 15368
           strict_required_status_checks_policy: false
