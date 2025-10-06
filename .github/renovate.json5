@@ -10,6 +10,7 @@
     'github>techneg-it/.github:weekly',
     ':automergeDigest',
     ':automergeStableNonMajor',
+    'customManagers:dockerfileVersions',
   ],
   customDatasources: {
     omnitruck: {
