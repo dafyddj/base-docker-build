@@ -8,6 +8,7 @@
     'github>techneg-it/.github:pre-commit',
     'github>techneg-it/.github:python-versions',
     'github>techneg-it/.github:weekly',
+    ':automergeDigest',
     ':automergeStableNonMajor',
   ],
   customDatasources: {
