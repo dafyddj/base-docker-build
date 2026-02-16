@@ -12,7 +12,7 @@
     ':automergeStableNonMajor',
     'customManagers:dockerfileVersions',
   ],
-  // Disable `bundler` to keep `test-kitchen` versions in line with Chef Workstation
+  // Disable `bundler` to keep Test Kitchen versions in sync with Chef Workstation
   bundler: {
     enabled: false,
   },
@@ -30,6 +30,12 @@
         'AleksaC/hadolint-py',
       ],
       versioning: 'loose',
+    },
+    {
+      // Update Ruby (for Test Kitchen) manually to keep in sync with Chef Workstation
+      matchDepNames: ['ruby'],
+      matchDepTypes: ['uses-with'],
+      enabled: false,
     },
   ],
 }
