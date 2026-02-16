@@ -12,6 +12,10 @@
     ':automergeStableNonMajor',
     'customManagers:dockerfileVersions',
   ],
+  // Disable `bundler` to keep `test-kitchen` versions in line with Chef Workstation
+  bundler: {
+    enabled: false,
+  },
   customDatasources: {
     omnitruck: {
       defaultRegistryUrlTemplate: 'https://omnitruck.chef.io/stable/{{packageName}}/versions/latest',
